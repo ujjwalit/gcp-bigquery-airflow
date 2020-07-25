@@ -30,11 +30,12 @@ schedule_interval = "00 21 * * *"
 
 # Define DAG: Set ID and assign default args and schedule interval
 dag = DAG(
-    'bigquery_github_trends', 
+    'bigquery_check', 
     default_args=default_args, 
     schedule_interval=schedule_interval
     )
-
+## For testing individual tasks run the below code in your terminal 
+## airflow test bigquery_github_trends bq_check_githubarchive_day 2020-12-01
 ## Task 1: check that the github archive data has a dated table created for that date
 t1 = BigQueryCheckOperator(
         task_id='bq_check_githubarchive_day',
